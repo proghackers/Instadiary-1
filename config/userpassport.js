@@ -42,11 +42,12 @@ module.exports = function(passport) {
             // asynchronous
             process.nextTick(function() {
 
+                console.log(Date() + 'Request', req);
                 // check if the user is already logged in
-                console.log(Date() + 'Facebook Profile ' + profile.cover);
+                console.log(Date() + 'Insta Profile', profile);
                 if (!req.user) {
 
-                    User.findOne({ 'facebook.id': profile.id }, function(err, user) {
+                    User.findOne({ 'instagram.id': profile.id }, function(err, user) {
                         if (err) {
                             return done(err);
                         }
@@ -73,8 +74,8 @@ module.exports = function(passport) {
                         } else {
                             // if there is no user, create them
                             var newUser = new User();
-                            newUser.facebook.id = profile.id;
-                            newUser.facebook.token = token;
+                            newUser.instagram.id = profile.id;
+                            newUser.instagram.token = token;
                             newUser.name = profile.name.givenName + ' ' + profile.name.familyName;
                             newUser.email = (profile.emails[0].value || '').toLowerCase();
 
@@ -91,8 +92,8 @@ module.exports = function(passport) {
                     // user already exists and is logged in, we have to link accounts
                     var user = req.user; // pull the user out of the session
 
-                    user.facebook.id = profile.id;
-                    user.facebook.token = token;
+                    user.instagram.id = profile.id;
+                    user.instagram.token = token;
                     user.name = profile.name.givenName + ' ' + profile.name.familyName;
                     user.email = (profile.emails[0].value || '').toLowerCase();
 
