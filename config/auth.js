@@ -4,8 +4,8 @@
 module.exports = {
 
     'instagramAuth': {
-        'clientID': 'a0e8b2cd8c2144e3a1795ea2bb1f8035', // your App ID
-        'clientSecret': 'c71de5a60b1042469fc6f28ac9fcc019', // your App Secret
-        'callbackURL': ''
+        'clientID': '0a1a272b794748249d1a850a8de7f467', // your App ID
+        'clientSecret': 'fb1126b209fa4b21ba165a4a175dcc73', // your App Secret
+        'callbackURL': 'https://metaheuristics.xyz/insta/auth/instagram/callback'
     }
 };
