@@ -4,15 +4,6 @@ var userSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    email: {
-        type: String,
-        required: true
-    },
-    local: {
-        password: {
-            type: String
-        }
-    },
     instagram: {
         id: {
             type: String,
