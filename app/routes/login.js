@@ -1,3 +1,4 @@
+var request = require('request');
 // route middleware to ensure user is logged in
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {
@@ -11,8 +12,21 @@ module.exports = function(app, passport) {
 
     // PROFILE SECTION =========================
     app.get('/user/profile', isLoggedIn, function(req, res) {
-        res.render('userprofile', {
-            user: req.user
+        request('https://api.instagram.com/v1/users/self/media/recent/?access_token=' + req.user.instagram.token, function(error, response, body) {
+            var imgs = [];
+            if (error) {
+                console.log(error);
+            }
+            console.log(response);
+            console.log(Date() + body);
+            var instaValue = JSON.parse(body);
+            for (var i = 0; i < instaValue.data.length; i++) {
+                var ele = instaValue.data[i];
+                imgs.push(ele.images.standard_resolution.url);
+            }
+            res.render('userprofile', {
+                images: imgs
+            });
         });
     });
 

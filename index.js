@@ -8,6 +8,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var path = require('path');
+var request = require('request');
 
 // ================ DB CONFIG ================
 var dbConfig = require('./config/database.js');
