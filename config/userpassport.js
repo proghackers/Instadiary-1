@@ -59,7 +59,7 @@ module.exports = function(passport) {
                             // if there is a user id already but no token (user was linked at one point and then removed)
                             if (!user.instagram.token) {
                                 user.instagram.token = token;
-                                user.name = profile.full_name;
+                                user.name = profile.displayName;
 
                                 user.save(function(err) {
                                     if (err) {
@@ -75,7 +75,7 @@ module.exports = function(passport) {
                             var newUser = new User();
                             newUser.instagram.id = profile.id;
                             newUser.instagram.token = token;
-                            newUser.name = profile.full_name;
+                            newUser.name = profile.displayName;
 
                             newUser.save(function(err) {
                                 if (err) {
@@ -92,7 +92,7 @@ module.exports = function(passport) {
 
                     user.instagram.id = profile.id;
                     user.instagram.token = token;
-                    user.name = profile.full_name;
+                    user.name = profile.displayName;
 
                     user.save(function(err) {
                         if (err) {
