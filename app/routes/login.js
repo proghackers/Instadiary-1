@@ -25,7 +25,7 @@ module.exports = function(app, passport) {
     // instagram -------------------------------
 
     // send to facebook to do the authentication
-    app.get('/auth/instagram', passport.authenticate('instagram', { scope: 'email' }));
+    app.get('/auth/instagram', passport.authenticate('instagram'));
 
     // handle the callback after facebook has authenticated the user
     app.get('/auth/instagram/callback',
