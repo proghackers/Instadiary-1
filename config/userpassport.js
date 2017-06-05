@@ -42,7 +42,7 @@ module.exports = function(passport) {
             // asynchronous
             process.nextTick(function() {
 
-                console.log(Date() + 'Request', req);
+                //console.log(Date() + 'Request', req);
                 // check if the user is already logged in
                 console.log(Date() + 'Insta Profile', profile);
                 if (!req.user) {
@@ -57,10 +57,9 @@ module.exports = function(passport) {
                             console.log(user);
 
                             // if there is a user id already but no token (user was linked at one point and then removed)
-                            if (!user.facebook.token) {
-                                user.facebook.token = token;
-                                user.name = profile.name.givenName + ' ' + profile.name.familyName;
-                                user.email = (profile.emails[0].value || '').toLowerCase();
+                            if (!user.instagram.token) {
+                                user.instagram.token = token;
+                                user.name = profile.full_name;
 
                                 user.save(function(err) {
                                     if (err) {
@@ -76,8 +75,7 @@ module.exports = function(passport) {
                             var newUser = new User();
                             newUser.instagram.id = profile.id;
                             newUser.instagram.token = token;
-                            newUser.name = profile.name.givenName + ' ' + profile.name.familyName;
-                            newUser.email = (profile.emails[0].value || '').toLowerCase();
+                            newUser.name = profile.full_name;
 
                             newUser.save(function(err) {
                                 if (err) {
@@ -94,8 +92,7 @@ module.exports = function(passport) {
 
                     user.instagram.id = profile.id;
                     user.instagram.token = token;
-                    user.name = profile.name.givenName + ' ' + profile.name.familyName;
-                    user.email = (profile.emails[0].value || '').toLowerCase();
+                    user.name = profile.full_name;
 
                     user.save(function(err) {
                         if (err) {
