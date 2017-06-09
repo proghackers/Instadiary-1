@@ -4,6 +4,22 @@
 
 <ul class="people_list">
   {{#each images}}
-    <li><img src="{{this}}" alt="Wow"></li>
+    <li>
+    <a href="#" class=tilter tilter--2">
+    <figure class="tilter__figure">
+
+    	<img src="{{this}}" alt="instagram_images">
+    	<div class="tilter__deco titler--shine"><div></div></div>
+    	<div class="titler__deco titler--overlay"><div></div></div>
+    	<figcaption class="tilter__caption">
+			<h3 class="tilter__title">Helen Portland</h3>
+			<p class="tilter__description">Seattle</p>
+		</figcaption>
+		<svg class="tilter__deco tilter__deco--lines" viewBox="0 0 300 415">
+			<path d="M20.5,20.5h260v375h-260V20.5z" />
+		</svg>
+	</figure>
+	</a>
+    </li>
   {{/each}}
 </ul>
